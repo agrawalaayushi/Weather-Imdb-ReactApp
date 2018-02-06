@@ -2,7 +2,7 @@ import React  from 'react';
 import WeatherImdb from './common';
 
 const weather_API_KEY =  '63cca6047af3f36befdd10d3220288b4';
-var data;
+var data = "";
 export default class Weather extends React.Component{
 
     componentWillMount(){
@@ -15,7 +15,7 @@ export default class Weather extends React.Component{
         const api_call = await fetch(URL);
         data = await api_call.json(); //converting api-call to json format for readability
         console.log(data);
-        // this.setState({});
+        this.setState({});
     };
     render(){
         console.log(data);
