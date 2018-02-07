@@ -5,20 +5,21 @@ import { createStore } from 'redux'
 import './index.css';
 import App from './App';
 import { Router, Route, browserHistory } from 'react-router'
-import ImdbRating from './components/ImdbRating';
+import ImdbRatingPage from './components/ImdbRating';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
-import {loadWeather} from './actions/weatherActions';
+import {loadWeather} from './actions/action';
+import {loadImdbRating} from './actions/action';
 
 const store = configureStore();
 
-store.dispatch(loadWeather());
+store.dispatch(loadImdbRating());
 
 ReactDOM.render(
   <Provider store = {store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}/>
-      <Route path="/imdbRating" component={ImdbRating} />
+      <Route path="/imdbRating" component={ImdbRatingPage} />
     </Router>
   </Provider>, 
 document.getElementById('root'));
