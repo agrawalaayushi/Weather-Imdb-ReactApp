@@ -12,5 +12,8 @@ export function loadWeather(){
 }                   
 
 export function loadWeatherSuccess(weatherReducer){
-    return {type: types.LOAD_WEATHER_SUCCESS, weatherReducer};
+    return {
+        type: types.LOAD_WEATHER_SUCCESS, 
+        weatherReducer
+    };
 }
