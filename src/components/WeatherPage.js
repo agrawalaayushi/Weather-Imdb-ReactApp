@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as weatherActions from '../actions/weatherActions';
+import * as action from '../actions/action';
 import WeatherImdb from './common';
 
-class Weather extends React.Component{
+class WeatherPage extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -35,5 +35,5 @@ function mapStateToProps(state, ownProps){
 function mapDispatchToProps(state,ownProps){
 
 }
-export default connect (mapStateToProps)(Weather);
+export default connect (mapStateToProps)(WeatherPage);
   
