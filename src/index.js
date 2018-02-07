@@ -8,8 +8,6 @@ import { Router, Route, browserHistory } from 'react-router'
 import ImdbRating from './components/ImdbRating';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
-// import WeatherPage from './components/WeatherPage';
-// import Weather from './components/Weather'
 import {loadWeather} from './actions/weatherActions';
 
 const store = configureStore();
