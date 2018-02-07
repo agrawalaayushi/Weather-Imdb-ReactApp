@@ -1,0 +1,1 @@
+export const LOAD_WEATHER_SUCCESS = 'LOAD_WEATHER_SUCCESS'; //useing constants to store our action types.
