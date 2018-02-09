@@ -1,3 +1,4 @@
-export default{
-    weatherReducer: [], 
+export default {
+    // weatherReducer: [], 
+    // imdbRatingReducer: []
 }

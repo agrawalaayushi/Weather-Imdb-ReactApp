@@ -22,7 +22,6 @@ export function loadWeatherSuccess(weatherReducer){
 export function loadImdbRating(){  
     return function(dispatch){
         return ImdbRatingApi.getImdbRating().then(response => {
-            console.log("IMDB API Response", response )
             dispatch(loadImdbRatingSuccess(response));
         }).catch(error => {
             throw(error);

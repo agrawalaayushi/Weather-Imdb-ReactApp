@@ -4,14 +4,14 @@ import WeatherPage from './components/WeatherPage';
 
 class App extends Component {
   
-render() {
-  return (
-    <div>
-      <Header/> 
-      <WeatherPage />
-    </div>
-  );
-}
+  render() {
+    return (
+      <div>
+        <Header/> 
+        <WeatherPage />
+      </div>
+    );
+  }
 }
 
 export default App;

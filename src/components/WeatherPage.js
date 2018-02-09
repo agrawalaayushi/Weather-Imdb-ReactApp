@@ -4,36 +4,31 @@ import * as action from '../actions/action';
 import WeatherImdb from './common';
 
 class WeatherPage extends React.Component{
-    constructor(props) {
-        super(props)
-        this.state = {
-            weatherData: undefined,
-        }
-      }
-  
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            weatherData:nextProps.weather,
-        });
+
+    componentDidMount (){
+        this.getData();
     }
+
+    getData(){
+        this.props.dispatch(action.loadWeather())
+    }
+
     render(){
         return(  
             <div> 
-                <div>
-                    <WeatherImdb data= { this.state.weather } />
-                </div>
+                {this.props.weather && <WeatherImdb data= { this.props.weather } />}
             </div>
         )
     }
 }
 
 function mapStateToProps(state, ownProps){
+    // console.log(state.Reducer.weatherReducer)
+    console.log(state)
     return{
-        weather: state.weatherReducer
+        weather: state.reducer.weatherData
     };
 }
-function mapDispatchToProps(state,ownProps){
 
-}
 export default connect (mapStateToProps)(WeatherPage);
   

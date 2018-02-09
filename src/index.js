@@ -12,9 +12,8 @@ import {loadWeather} from './actions/action';
 import {loadImdbRating} from './actions/action';
 
 const store = configureStore();
-
-store.dispatch(loadImdbRating());
-
+// store.dispatch(loadWeather());
+// store.dispatch(loadImdbRating());
 ReactDOM.render(
   <Provider store = {store}>
     <Router history={browserHistory}>
