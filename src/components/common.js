@@ -19,6 +19,7 @@ class WeatherImdb extends React.Component{
                 <div className="App-btn-div">
                     <Link to="/imdbRating"><button className="App-btn">Get IMDB Rating</button></Link>
                     <Link to="/"><button className="App-btn" >Go Back</button></Link>
+                    <Link to="/blog"><button className="App-btn" >Blog</button></Link>
                 </div>
                 <div className="App-content">
                     {this.props.data.name && this.props.data.sys && this.props.data.sys.country &&<p> Location: {this.props.data.name}, {this.props.data.sys.country}</p>}

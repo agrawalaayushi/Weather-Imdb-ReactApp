@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import { Router, Route, browserHistory } from 'react-router'
 import ImdbRatingPage from './components/ImdbRating';
+import Blog from './components/Blog';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 import {loadWeather} from './actions/action';
@@ -19,6 +20,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}/>
       <Route path="/imdbRating" component={ImdbRatingPage} />
+      <Route path="/blog" component={Blog} />
     </Router>
   </Provider>, 
 document.getElementById('root'));
