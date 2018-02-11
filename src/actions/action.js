@@ -1,5 +1,6 @@
 import WeatherApi from '../api/WeatherApi';
 import ImdbRatingApi from '../api/ImdbRatingApi';
+import BlogApi from '../api/BlogApi';
 import * as types from './actionTypes';
 
 export function loadWeather(){ // getting API response, dispatch response to action
@@ -28,7 +29,21 @@ export function loadImdbRating(){
         });
     };
 }
-
+export function postBlog(postData){  
+    return function(dispatch){
+        return BlogApi.postBlogContent(postData).then(response => {
+            dispatch(postBlogRequest(response));
+        }).catch(error => {
+            throw(error);
+        });
+    };
+}
+export function postBlogRequest(postBlogReducer){
+    return{
+        type: types.POST_BLOG_REQUEST,
+        postBlogReducer
+    }
+}
 export function loadImdbRatingSuccess(imdbRatingReducer){
     return{
         type: types.LOAD_IMDBRATING_SUCCESS,

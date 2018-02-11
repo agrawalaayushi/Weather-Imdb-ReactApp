@@ -1,2 +1,4 @@
 export const LOAD_WEATHER_SUCCESS = 'LOAD_WEATHER_SUCCESS'; //using constants to store our action types.
 export const LOAD_IMDBRATING_SUCCESS = 'LOAD_IMDBRATING_SUCCESS';
+export const POST_BLOG_REQUEST = 'POST_BLOG_REQUEST';
+// POST_BLOG_REQUEST
