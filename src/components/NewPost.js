@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../style/NewPost.css';
 
-let i = 1;
+// let i = 1;
 class NewPost extends Component {
     constructor(props){
         super(props);
@@ -25,7 +25,8 @@ class NewPost extends Component {
     handleSubmitAddPost(event){
         event.preventDefault();
         console.log("coming", this.state);
-        i = i+1;
+        // i = i+1; getUTCMilliseconds()
+        var i = new Date().getUTCMilliseconds();
         let postData = {
             id: i,
             title: this.state.title, 
