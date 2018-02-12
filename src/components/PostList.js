@@ -43,7 +43,7 @@ export default class PostList extends Component {
     handleRemovePost(index){
         this.setState({
             posts: this.state.posts.filter(function(e, i) {
-                return i != index;
+                return i !== index;
             })
         })
     }

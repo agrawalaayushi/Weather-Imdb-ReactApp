@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Header from './Header';
 import * as action from '../actions/action';
 import WeatherImdb from './common';
-import configureStore from '../store/configureStore';
 
 class ImdbRatingPage extends React.Component{
 

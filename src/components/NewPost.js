@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import * as action from '../actions/action';
 import '../style/NewPost.css';
 
 // let localState = localStorage.getItem('blogPost-collection');

@@ -1,14 +1,9 @@
 import React  from 'react';
-import {connect} from 'react-redux';
 import {Link} from 'react-router'; 
 import '../App.css';
-import {loadImdbRating} from '../actions/action';
-import {loadImdbRatingSuccess} from '../actions/action';
-import * as types from '../actions/actionTypes';
-
-import configureStore from '../store/configureStore';
-
-const store = configureStore();
+// import {loadImdbRating} from '../actions/action';
+// import {loadImdbRatingSuccess} from '../actions/action';
+// import * as types from '../actions/actionTypes';
 
 
 class WeatherImdb extends React.Component{
