@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import * as action from '../actions/action';
 import WeatherImdb from './common';
 
@@ -15,8 +16,14 @@ class WeatherPage extends React.Component{
 
     render(){
         return(  
-            <div> 
-                {this.props.weather && <WeatherImdb data= { this.props.weather } />}
+            <div>
+                <div className="App-btn-div">
+                    <Link to="/imdbRating"><button className="App-btn">Get IMDB Rating</button></Link>
+                    <Link to="/blog"><button className="App-btn" >Blog</button></Link>
+                </div>
+                <div> 
+                    {this.props.weather && <WeatherImdb data= { this.props.weather } />}
+                </div>
             </div>
         )
     }
