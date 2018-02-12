@@ -8,8 +8,6 @@ import ImdbRatingPage from './components/ImdbRating';
 import Blog from './components/Blog';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
-// import {loadWeather} from './actions/action';
-// import {loadImdbRating} from './actions/action';
 
 const store = configureStore();
 // store.dispatch(loadWeather());

@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../style/NewPost.css';
 
-// let localState = localStorage.getItem('blogPost-collection');
-// let blogs = (localStorage.getItem('blogPost-collection') != null) ? JSON.parse(localState) : [
-// 	{title: "Java", content: "Backend-coding Language", author: "Manu"}
-// 	//{name: "Surbhi", email: "surbhi@gmail.com"},
-// 	// {name: "Anubhav", email: "anubhav@gmail.com"}
-// 	];
-//     localStorage.setItem('blogPost-collection', JSON.stringify(blogs));
 let i = 1;
 class NewPost extends Component {
     constructor(props){
@@ -32,18 +25,16 @@ class NewPost extends Component {
     handleSubmitAddPost(event){
         event.preventDefault();
         console.log("coming", this.state);
-      
+        i = i+1;
         let postData = {
             id: i,
             title: this.state.title, 
             content: this.state.content, 
             author: this.state.author
         };
-        i = i+1;
         console.log("id",i)
         this.props.onAddPost(postData);
         console.log("PRINT ", postData);
-        // localStorage.setItem("posts",JSON.stringify(this.state.postData));
         // this.props.dispatch(action.postBlog(postData));
         axios.post('http://jsonplaceholder.typicode.com/posts', postData)
             .then(response => {
@@ -69,7 +60,6 @@ class NewPost extends Component {
                     <div className="display-inline form-group">
                     <label className="col-sm-5">Author</label>  
                     <select value={this.state.author} className= "form-control col-sm-6" onChange={this.handleAuthorChange} >
-                    {/* onChange={(event) => this.setState({author: event.target.value})} */}
                         <option value="Rabbit">Rabbit</option>
                         <option value="Tortoise">Tortoise</option>
                     </select>

@@ -1,10 +1,6 @@
 import React  from 'react';
 import {Link} from 'react-router'; 
 import '../App.css';
-// import {loadImdbRating} from '../actions/action';
-// import {loadImdbRatingSuccess} from '../actions/action';
-// import * as types from '../actions/actionTypes';
-
 
 class WeatherImdb extends React.Component{
     
