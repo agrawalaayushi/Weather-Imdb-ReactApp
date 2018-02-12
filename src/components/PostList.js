@@ -8,30 +8,36 @@ export default class PostList extends Component {
         this.state = {
             posts: [
                 {   
-                    id: "1",
-                    title: 'The Valverine Rabbit',
+                    id: 1,
+                    title: 'The Velveteen  Rabbit',
                     content: 'Story about Rabbit',
                     author: 'Rabbit',
                 },
-                {   id: "2",
-                    title: 'The Valverine Tortoise',
-                    content: 'The Valverine Tortoise',
-                    author: 'Tortoise',
-                },
-                {   id: "3",
-                    title: 'The Valverine Bear',
-                    content: 'The Valverine Bear',
-                    author: 'Bear',
-                }
-            //     {   id: "4",
-            //     title: 'The Valverine Bear',
-            //     content: 'The Valverine Bear',
-            //     author: 'Bear',
-            // }
+                // {   id: "2",
+                //     title: 'The Velveteen  Tortoise',
+                //     content: 'The Valverine Tortoise',
+                //     author: 'Tortoise',
+                // },
+                // {   id: "3",
+                //     title: 'The Velveteen  Bear',
+                //     content: 'The Valverine Bear',
+                //     author: 'Bear',
+                // }
             ]
         };
       
         this.handleAddPost =    this.handleAddPost.bind(this);
+    }
+
+    componentWillMount(){
+        console.log("POSTS", this.state.posts);
+        if(localStorage.length !== 0) {
+            console.log("GOING", localStorage.length);
+            const cachedPosts = JSON.parse(localStorage.getItem('posts'));
+            console.log("GET", cachedPosts);
+            this.setState({posts: cachedPosts});
+        }
+        localStorage.setItem("posts",JSON.stringify(this.state.posts));
     }
 
     handleRemovePost(index){
@@ -42,9 +48,20 @@ export default class PostList extends Component {
         })
     }
     handleAddPost(post) {
-        this.setState({posts: [...this.state.posts, post]})
+        console.log("post", post);
+        this.setState(
+            { posts: [...this.state.posts, post]
+            });
+        console.log("CAlled", this.state.posts);
+       
+    }
+
+    componentWillUpdate(nextProps, newState){
+        console.log("Called");
+        localStorage.setItem("posts",JSON.stringify(newState.posts));
     }
     render(){
+        console.log("This.setstate", this.state.posts);
         return(  
             <div>
                 <NewPost onAddPost={this.handleAddPost}/>

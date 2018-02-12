@@ -10,72 +10,49 @@ import '../style/NewPost.css';
 // 	// {name: "Anubhav", email: "anubhav@gmail.com"}
 // 	];
 //     localStorage.setItem('blogPost-collection', JSON.stringify(blogs));
-
+let i = 1;
 class NewPost extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            posts: [
-                {   
-                    id: "",
+                    id: 1,
                     title: '',
                     content: '',
                     author: 'Rabbit',
-                },
-               
-            ]
         };
         this.handleAuthorChange = this.handleAuthorChange.bind(this);
         this.handleSubmitAddPost = this.handleSubmitAddPost.bind(this);
     }
-  
-    postDataHandler = () => {
-        let postData = {
-            title: this.state.title, 
-            body: this.state.content, 
-            author: this.state.author
-        };
-        localStorage.setItem('blogPost-collection', JSON.stringify(postData));
-        
-        // console.log(blogs)
-      
-    }
    
     handleAuthorChange(event){
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
         this.setState ({
-            [name]: value
-        })
+            author: event.target.value
+        });
     }
     handleSubmitAddPost(event){
         event.preventDefault();
-        console.log("coming")
-        this.props.onAddPost(this.state);
-        let postData = {
-            title: this.setState.title, 
-            body: this.setState.content, 
-            author: this.setState.author
-        };
+        console.log("coming", this.state);
       
+        let postData = {
+            id: i,
+            title: this.state.title, 
+            content: this.state.content, 
+            author: this.state.author
+        };
+        i = i+1;
+        console.log("id",i)
+        this.props.onAddPost(postData);
+        console.log("PRINT ", postData);
+        // localStorage.setItem("posts",JSON.stringify(this.state.postData));
         // this.props.dispatch(action.postBlog(postData));
         axios.post('http://jsonplaceholder.typicode.com/posts', postData)
             .then(response => {
                 console.log("API response",response);
             });
     }
-
-    componentWillMount(){
-        // localStorage.getItem('blogPost-collection') && this.setState({
-        //     posts: JSON.parse(localStorage.getItem('blogPost-collection'))
-        //  }) ;
-    }
   
     render () {
-      console.log(this.state.posts.title);
         return (
 
             <div>
@@ -84,11 +61,11 @@ class NewPost extends Component {
                     <form  onSubmit={this.handleSubmitAddPost}>
                     <div className="display-inline form-group">
                         <label className="col-sm-5">Title</label>
-                        <input type="text" className= "form-control col-sm-6" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
+                        <input type="text" className= "form-control col-sm-6" value={this.state.title} required onChange={(event) => this.setState({title: event.target.value})} />
                     </div>
                     <div className="display-inline form-group">
                     <label className="col-sm-5">Content</label>
-                    <textarea rows="2" className= "form-control col-sm-6"value={this.state.content} onChange={(event) => this.setState({content: event.target.value})} />
+                    <textarea rows="2" className= "form-control col-sm-6" value={this.state.content} required onChange={(event) => this.setState({content: event.target.value})} />
                     </div>
                     <div className="display-inline form-group">
                     <label className="col-sm-5">Author</label>  
