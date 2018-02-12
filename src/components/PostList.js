@@ -13,16 +13,6 @@ export default class PostList extends Component {
                     content: 'Story about Rabbit',
                     author: 'Rabbit',
                 },
-                // {   id: "2",
-                //     title: 'The Velveteen  Tortoise',
-                //     content: 'The Valverine Tortoise',
-                //     author: 'Tortoise',
-                // },
-                // {   id: "3",
-                //     title: 'The Velveteen  Bear',
-                //     content: 'The Valverine Bear',
-                //     author: 'Bear',
-                // }
             ]
         };
       
@@ -37,6 +27,7 @@ export default class PostList extends Component {
             console.log("GET", cachedPosts);
             this.setState({posts: cachedPosts});
         }
+    
         localStorage.setItem("posts",JSON.stringify(this.state.posts));
     }
 
@@ -62,6 +53,7 @@ export default class PostList extends Component {
     }
     render(){
         console.log("This.setstate", this.state.posts);
+        
         return(  
             <div>
                 <NewPost onAddPost={this.handleAddPost}/>
