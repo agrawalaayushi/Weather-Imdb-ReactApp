@@ -4,8 +4,15 @@ import {Link} from 'react-router';
 import Header from './Header';
 import * as action from '../actions/action';
 import WeatherImdb from './common';
+import  '../style/common.css';
 
 class ImdbRatingPage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            ImdbRatingData: ""
+        };
+    }
 
     componentWillMount (){
         this.getData();
@@ -16,22 +23,27 @@ class ImdbRatingPage extends React.Component{
     }
 
     render(){
-        return( 
-            <div>
-                <Header/>
-                <div className="App-btn-div">
-                    <Link to="/"><button className="App-btn" >Go Back</button></Link>
-                    <Link to="/blog"><button className="App-btn" >Blog</button></Link>
+            return( 
+                <div>
+                    <Header/>
+                    <div className="App-btn-div">
+                        <Link to="/"><button className="App-btn" >Go Back</button></Link>
+                        <Link to="/blog"><button className="App-btn" >Blog</button></Link>
+                    </div>
+                    {this.props.ImdbRatingData === undefined ? <div className="loader"></div>
+                        :<div>
+                            { this.props.ImdbRatingData && <WeatherImdb data= { this.props.ImdbRatingData} />}
+                        </div>
+                    }
                 </div>
-                { this.props.ImdbRatingData && <WeatherImdb data= { this.props.ImdbRatingData} />}
-            </div>
-        )
+            )
+        
     }
 }
 
 function mapStateToProps(state, ownProps){
     return{
-        ImdbRatingData: state.reducer.movieData
+        ImdbRatingData: state.reducer.movieData,
     };
 }
   
