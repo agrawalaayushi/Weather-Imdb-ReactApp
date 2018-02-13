@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import NewPost from './NewPost';
+import PostCard from './PostCard';
+import {connect} from 'react-redux';
+import * as action from '../actions/action';
 
-export default class PostList extends Component {
+class PostList extends Component {
     constructor(props){
         super(props);
 
@@ -17,14 +20,12 @@ export default class PostList extends Component {
         };
       
         this.handleAddPost =    this.handleAddPost.bind(this);
+        this.handleRemovePost =    this.handleRemovePost.bind(this);
     }
 
     componentWillMount(){
-        console.log("POSTS", this.state.posts);
         if(localStorage.length !== 0) {
-            console.log("GOING", localStorage.length);
             const cachedPosts = JSON.parse(localStorage.getItem('posts'));
-            console.log("GET", cachedPosts);
             this.setState({posts: cachedPosts});
         }
     
@@ -32,45 +33,31 @@ export default class PostList extends Component {
     }
 
     handleRemovePost(index){
-        this.setState({
-            posts: this.state.posts.filter(function(e, i) {
-                return i !== index;
-            })
-        })
-    }
-    handleAddPost(post) {
-        console.log("post", post);
-        this.setState(
-            { posts: [...this.state.posts, post]
-            });
-        console.log("CAlled", this.state.posts);
-       
+        let array = this.state.posts;
+        array.splice(index, 1);
+        this.setState({posts: array });
     }
 
+    handleAddPost(post) {
+        this.setState({
+            posts: [...this.state.posts, post]
+         });
+    }
     componentWillUpdate(nextProps, newState){
-        console.log("Called");
         localStorage.setItem("posts",JSON.stringify(newState.posts));
     }
     render(){
-        console.log("This.setstate", this.state.posts);
-        
         return(  
             <div>
                 <NewPost onAddPost={this.handleAddPost}/>
               <div className= "post-card " >
-                {this.state.posts.map((post, index) =>
-                <div className="list-group-item col-xs-3 col-sm-4 col-md-3 col-lg-3" key={post.id}>
-                    <h4 className = "list-group-item-heading">{post.title}</h4>
-                    <p className = "list-group-item-heading">{post.content}</p>
-                    <p className = "list-group-item-heading">{post.author}</p>
-                    <button className="btn btn-danger btn-sm" onClick={this.handleRemovePost.bind(this, index)}><span className="glyphicon glyphicon-trash">Delete</span></button>
+                    {this.state.posts.map((post, index) =>   
+                        <PostCard data = {post} key = {post.id} ondeletePost= {this.handleRemovePost.bind(this, index)}/>
+                     )}
                 </div>
-
-                )}
-            </div>
             </div>
         );
-      
-        
     }
-}
+} 
+
+export default (PostList);
