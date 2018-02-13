@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import '../style/NewPost.css';
 
 // let i = 1;
@@ -24,23 +23,16 @@ class NewPost extends Component {
     }
     handleSubmitAddPost(event){
         event.preventDefault();
-        console.log("coming", this.state);
-        // i = i+1; getUTCMilliseconds()
-        var i = new Date().getUTCMilliseconds();
+        var i = new Date().getTime();
         let postData = {
             id: i,
             title: this.state.title, 
             content: this.state.content, 
             author: this.state.author
         };
-        console.log("id",i)
         this.props.onAddPost(postData);
-        console.log("PRINT ", postData);
         // this.props.dispatch(action.postBlog(postData));
-        axios.post('http://jsonplaceholder.typicode.com/posts', postData)
-            .then(response => {
-                console.log("API response",response);
-            });
+      
     }
   
     render () {
